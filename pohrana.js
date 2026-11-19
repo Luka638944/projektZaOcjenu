@@ -17,8 +17,7 @@ export async function ucitajZadatke() {
       return [];
     }
     // Ako JSON nije valjan
-    console.error('Upozorenje: Datoteka zadaci.json sadrzi neispravan format.
-         Pokrecem s praznim popisom.');
+    console.error('Upozorenje: Datoteka zadaci.json sadrzi neispravan format. Vracam prazan popis zadataka.');
     return [];
   }
 }
