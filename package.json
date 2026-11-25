@@ -1,14 +1,14 @@
 {
   "name": "biljeznica",
   "version": "1.0.0",
-  "description": "Jednostavna konzolna biljeznica u Node.js-u",
+  "description": "Projektni zadatak: Jednostavna konzolna biljeznica u Node.js-u",
   "type": "module",
   "main": "glavni.js",
   "scripts": {
     "start": "node glavni.js",
     "dev": "nodemon glavni.js"
   },
-  "author": "Rendi 3.b",
+  "author": "Luka Rendula (Rendi) 3.b",
   "license": "ISC",
   "dependencies": {
     "chalk": "^6.0.1"

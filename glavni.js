@@ -12,7 +12,7 @@ async function pokreni() {
       const naslov = argumenti.join(' ').trim();
       
       if (!naslov) {
-        console.error('Pogreška: Nedostaje naslov zadatka.');
+        console.error('Pogreška: Nedostaje Vam naslov zadatka, obavezno dodajte naslov!');
         process.exit(1);
       }
 
@@ -27,13 +27,13 @@ async function pokreni() {
 
       zadaci.push(noviZadatak);
       await spremiZadatke(zadaci);
-      console.log(`Dodan zadatak [${noviId}]: "${naslov}"`);
+      console.log(`Dodan je Vaš novi zadatak [${noviId}]: "${naslov}"`);
       break;
     }
 
     case 'popis': {
       if (zadaci.length === 0) {
-        console.log('Popis zadataka je prazan.');
+        console.log('Popis zadataka je prazan, molimo Vas, dodajte neke zadatke.');
         return;
       }
 
@@ -50,25 +50,26 @@ async function pokreni() {
 
       // Provjera je li ID poslan i je li valjani broj
       if (!idArg || isNaN(idBroj)) {
-        console.error('Pogreška: ID zadatka mora biti valjani broj.');
+        console.error('Pogreška: ID zadatka mora biti valjani cijeli broj, ne može biti decimalan ili negativan.');
         process.exit(1);
       }
 
       const zadatak = zadaci.find(z => z.id === idBroj);
 
       if (!zadatak) {
-        console.error(`Pogreška: Zadatak s ID-jem ${idBroj} ne postoji.`);
+        console.error(` Velika Greška: Zadatak sa  ID-jem ${idBroj} ne postoji u ovom popisu.`);
         process.exit(1);
       }
 
       zadatak.gotovo = true;
       await spremiZadatke(zadaci);
-      console.log(`Zadatak ${idBroj} označen je kao gotovo.`);
+      console.log(`Zadatak s brojem:${idBroj} označen je kao gotovo!`);
       break;
     }
 
     default: {
-      console.error(`Pogreška: Nepoznata naredba "${naredba || ''}". Podržane naredbe su: dodaj, popis, gotovo.`);
+      console.error(`Greška: Naredba koju ste unijeli ne postoji. "${naredba || ''}". Naredbe koje ovaj program podržava su:
+         dodaj, popis, gotovo!`);
       process.exit(1);
     }
   }

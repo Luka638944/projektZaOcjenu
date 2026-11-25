@@ -4,7 +4,7 @@ const NAZIV_DATOTEKE = 'zadaci.json';
 
 /**
  * Ucitava zadatke iz JSON datoteke.
- * Ako datoteka ne postoji, vraca prazan niz.
+ * Ako datoteka ne postoji, vratit ce prazan niz.
  * Ako je sadržaj neispravan JSON, ispisuje poruku i vraca prazan niz bez rušenja.
  */
 export async function ucitajZadatke() {
@@ -13,10 +13,10 @@ export async function ucitajZadatke() {
     return JSON.parse(sadrzaj);
   } catch (greska) {
     if (greska.code === 'ENOENT') {
-      // Datoteka jos ne postoji
+      // Datoteka jos ne postoji.
       return [];
     }
-    // Ako JSON nije valjan
+    // if JSON nije valjan
     console.error('Upozorenje: Datoteka zadaci.json sadrzi neispravan format. Vracam prazan popis zadataka.');
     return [];
   }
@@ -29,7 +29,7 @@ export async function spremiZadatke(zadaci) {
   try {
     await writeFile(NAZIV_DATOTEKE, JSON.stringify(zadaci, null, 2), 'utf-8');
   } catch (greska) {
-    console.error('Pogreska prilikom spremanja zadataka:', greska.message);
+    console.error('Dogodila se pogreska prilikom spremanja zadataka:', greska.message);
     process.exit(1);
   }
 }
